@@ -1,7 +1,6 @@
 package pl.recipeproject.recipeproject.domain;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +16,8 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+    @Enumerated(EnumType.STRING)
+    private Difficulity difficulity;
     @Lob
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
@@ -103,5 +104,21 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulity getDifficulity() {
+        return difficulity;
+    }
+
+    public void setDifficulity(Difficulity difficulity) {
+        this.difficulity = difficulity;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
